@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Invetory } from './stores/Invetory';
+import { Item } from './stores/Item';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const invetory = new Invetory()
 root.render(
   <React.StrictMode>
-    <App />
+    <App store = {invetory} />
   </React.StrictMode>
 );
 
