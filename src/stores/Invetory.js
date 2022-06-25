@@ -1,4 +1,4 @@
-import { observable, makeObservable, action } from "mobx"
+import { observable, makeObservable, action, computed } from "mobx"
 import { Item } from "./Item"
 export class Invetory {
     constructor () {
@@ -7,7 +7,8 @@ export class Invetory {
             items : observable ,
             addItem : action ,
             buyItem : action ,
-            changePrice : action 
+            changePrice : action ,
+            numItems : computed
         })
     }
     
@@ -28,5 +29,9 @@ export class Invetory {
     changePrice (name, price) {
         let item = this.items.find(item => item.name === name)
         item.price = price
+    }
+
+    get numItems () {
+        return this.items.length
     }
 }

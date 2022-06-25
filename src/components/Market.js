@@ -1,4 +1,4 @@
-import { observer } from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import React, { Component } from 'react'
 import Item from './Item'
 
@@ -15,7 +15,7 @@ class Market extends Component {
     }
 
     addItem = () => {
-        this.props.store.addItem(this.state.itemName)
+        this.props.invetory.addItem(this.state.itemName)
     }
 
     render() {
@@ -27,7 +27,7 @@ class Market extends Component {
             </div>
 
             <div>
-               {this.props.store.items.map( (item, index) => <Item item = {item} key={index} store = {this.props.store}/>)}
+               {this.props.invetory.items.map( (item, index) => <Item item = {item} key={index} />)}
             </div>
 
         </div>
@@ -35,4 +35,4 @@ class Market extends Component {
   }
 }
 
-export default observer(Market)
+export default inject(`invetory`)(observer(Market))

@@ -5,12 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Invetory } from './stores/Invetory';
 import { Item } from './stores/Item';
+import { Provider } from 'mobx-react'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const invetory = new Invetory()
+
+const stores = {
+  invetory
+}
 root.render(
   <React.StrictMode>
-    <App store = {invetory} />
+    <Provider {... stores}>
+      <App/>
+    </Provider>
   </React.StrictMode>
 );
 
